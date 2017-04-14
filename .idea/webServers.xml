@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="60848062-7aaf-4863-a63c-5e8630939d70" name="php2.local" url="http://php2.local">
+        <fileTransfer port="0" mountedRoot="D:\OpenServer\domains\php2.local" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
