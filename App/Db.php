@@ -11,9 +11,27 @@ namespace App;
 
 class Db
 {
+    protected $dbh;
 
     function __construct()
     {
-        echo 'Hallo, DB!';
+        $this->dbh = new \PDO('mysql:host=localhost;dbname=test','root',''); //слеш перед PDO - потому что пространство имен!
+    }
+
+    public function execute($sql) //передаем запрос в метод
+    {
+        $sth = $this->dbh->prepare($sql); //готовим запрос
+        $res = $sth->execute(); //выполняем запрос
+        return $res;
+    }
+
+    public function query($sql)
+    {
+        $sth = $this->dbh->prepare($sql); //готовим запрос
+        $res = $sth->execute(); //выполняем запрос
+        if (false !== $res) {
+            return $sth->fetchAll(); //если данные есть, вернем данные запроса
+        }
+        return []; //если данных нет, вернем пустой массив
     }
 }
