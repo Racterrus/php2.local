@@ -25,12 +25,12 @@ class Db
         return $res;
     }
 
-    public function query($sql)
+    public function query($sql, $class)
     {
         $sth = $this->dbh->prepare($sql); //готовим запрос
         $res = $sth->execute(); //выполняем запрос
         if (false !== $res) {
-            return $sth->fetchAll(); //если данные есть, вернем данные запроса
+            return $sth->fetchAll(\PDO::FETCH_CLASS, $class); //если данные есть, вернем данные запроса
         }
         return []; //если данных нет, вернем пустой массив
     }
